@@ -20,6 +20,7 @@ const findUser = (id: number): User | undefined => {
 @Injectable()
 export class UserService {
   create(createUserDto: CreateUserDto) {
+    userList.push({ id: userList.length + 1, ...createUserDto });
     return { NewUser: createUserDto };
   }
 
@@ -42,6 +43,7 @@ export class UserService {
   }
 
   remove(id: number) {
-    return userList.filter(u => u.id !== 1);
+    userList.filter(u => u.id !== id);
+    return "completed";
   }
 }
